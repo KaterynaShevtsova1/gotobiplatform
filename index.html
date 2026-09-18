@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Головна | GO TO BI</title>
+<meta name="description" content="Катерина Шевцова — навчання Power BI. Наставництво в професію BI аналітик, інтенсив з Power BI, майстер-класи.">
+<link rel="icon" href="data:,">
+<style>
+  :root{
+    --ink:#1c1c1c;
+    --ink-soft:#4a4a4a;
+    --paper:#ffffff;
+    --paper-soft:#f7f6f4;
+    --line:#e6e3dd;
+    --accent:#c96f4a;
+    --accent-deep:#9c4f31;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Georgia','Charter',serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+  }
+  h1,h2,h3,h4{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0 0 .5em;
+    color:var(--ink);
+  }
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;max-width:1080px;margin:0 auto;
+  }
+  .brand{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:700;font-size:1.05rem;
+    text-decoration:none;color:var(--ink);
+  }
+  .nav-links{
+    display:flex;gap:32px;list-style:none;margin:0;padding:0;
+    font-family:'Helvetica Neue',Arial,sans-serif;font-size:.95rem;
+  }
+  .nav-links a{text-decoration:none;color:var(--ink-soft);transition:color .2s;}
+  .nav-links a:hover{color:var(--accent-deep);}
+  .nav-cta{
+    font-family:'Helvetica Neue',Arial,sans-serif;font-size:.9rem;
+    border:1px solid var(--ink);padding:8px 18px;border-radius:2px;
+    text-decoration:none;color:var(--ink);white-space:nowrap;
+  }
+  .burger{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;}
+
+  /* hero */
+  .hero{padding:72px 0 56px;}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+  .hero h1{font-size:2.6rem;line-height:1.15;max-width:14ch;}
+  .hero p.lede{font-family:'Helvetica Neue',Arial,sans-serif;color:var(--ink-soft);font-size:1.05rem;max-width:44ch;margin-bottom:1.6em;}
+  .btn{
+    display:inline-block;font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:.92rem;font-weight:600;text-decoration:none;
+    padding:13px 28px;border-radius:2px;
+  }
+  .btn-primary{background:var(--ink);color:#fff;}
+  .btn-primary:hover{background:var(--accent-deep);}
+  .btn-outline{border:1px solid var(--ink);color:var(--ink);margin-left:14px;}
+  .btn-outline:hover{border-color:var(--accent-deep);color:var(--accent-deep);}
+  .hero-media{
+    aspect-ratio:4/3;background:var(--paper-soft);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .hero-media img{width:100%;height:100%;object-fit:cover;}
+  .placeholder-note{
+    font-family:'Helvetica Neue',Arial,sans-serif;font-size:.78rem;color:#9c9484;
+    text-align:center;padding:12px;
+  }
+
+  /* section shell */
+  section{padding:64px 0;}
+  section.alt{background:var(--paper-soft);}
+  .section-head{max-width:56ch;margin-bottom:2.4em;}
+  .section-head h2{font-size:1.9rem;}
+  .section-head p{font-family:'Helvetica Neue',Arial,sans-serif;color:var(--ink-soft);}
+
+  /* course cards on home */
+  .quick-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .quick-card{
+    border:1px solid var(--line);padding:26px 24px;background:#fff;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  .quick-card .num{font-size:.78rem;color:var(--accent-deep);font-weight:700;letter-spacing:.04em;}
+  .quick-card h3{font-size:1.08rem;margin-top:.5em;}
+  .quick-card a{color:var(--accent-deep);text-decoration:none;font-size:.9rem;font-weight:600;}
+  .quick-card a:hover{text-decoration:underline;}
+
+  /* about */
+  .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
+  .about-media{aspect-ratio:3/4;background:var(--paper-soft);border:1px solid var(--line);overflow:hidden;}
+  .about-media img{width:100%;height:100%;object-fit:cover;}
+  .about-text p{color:var(--ink-soft);font-family:'Helvetica Neue',Arial,sans-serif;font-size:.98rem;}
+  .about-text strong{color:var(--ink);}
+
+  /* course detail cards */
+  .courses{display:flex;flex-direction:column;gap:0;}
+  .course-row{
+    display:grid;grid-template-columns:64px 1fr;gap:24px;
+    padding:40px 0;border-top:1px solid var(--line);
+  }
+  .course-row:last-child{border-bottom:1px solid var(--line);}
+  .course-row .idx{font-family:'Helvetica Neue',Arial,sans-serif;font-size:1.6rem;font-weight:700;color:var(--line);}
+  .course-row h3{font-size:1.3rem;margin-bottom:.6em;}
+  .course-meta{
+    font-family:'Helvetica Neue',Arial,sans-serif;font-size:.9rem;color:var(--ink-soft);
+    display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:1em;
+  }
+  .course-meta span{white-space:nowrap;}
+  .course-desc{font-family:'Helvetica Neue',Arial,sans-serif;font-size:.95rem;color:var(--ink-soft);max-width:62ch;white-space:pre-line;}
+  .course-actions{margin-top:1.2em;display:flex;gap:14px;flex-wrap:wrap;}
+  .link-btn{
+    font-family:'Helvetica Neue',Arial,sans-serif;font-size:.88rem;font-weight:600;
+    text-decoration:none;color:var(--accent-deep);border-bottom:1px solid var(--accent-deep);padding-bottom:2px;
+  }
+  .price-tag{
+    font-family:'Helvetica Neue',Arial,sans-serif;font-size:.88rem;font-weight:700;
+    color:var(--ink);background:var(--paper-soft);padding:4px 10px;border:1px solid var(--line);
+  }
+
+  /* blog */
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .blog-card{text-decoration:none;color:var(--ink);}
+  .blog-card .thumb{aspect-ratio:1/1;background:var(--paper-soft);border:1px solid var(--line);overflow:hidden;margin-bottom:14px;}
+  .blog-card .thumb img{width:100%;height:100%;object-fit:cover;}
+  .blog-card h3{font-family:'Helvetica Neue',Arial,sans-serif;font-size:1.02rem;font-weight:600;}
+
+  /* testimonials */
+  .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .test-card{
+    background:#fff;border:1px solid var(--line);padding:26px 24px;
+    font-family:'Helvetica Neue',Arial,sans-serif;font-size:.92rem;color:var(--ink-soft);
+  }
+  .test-card .quote{margin-bottom:1.2em;}
+  .test-card .who{font-weight:700;color:var(--ink);font-size:.9rem;}
+
+  /* contact */
+  .contact-box{
+    background:var(--ink);color:#fff;padding:56px 48px;
+    display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;
+  }
+  .contact-box h2{color:#fff;font-size:1.7rem;max-width:16ch;}
+  .contact-box p{font-family:'Helvetica Neue',Arial,sans-serif;color:#d8d5cf;}
+  .contact-box .btn-primary{background:#fff;color:var(--ink);}
+  .contact-box .btn-primary:hover{background:var(--accent);color:#fff;}
+
+  /* footer */
+  footer{padding:44px 0 36px;border-top:1px solid var(--line);}
+  .foot-grid{
+    display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;
+    font-family:'Helvetica Neue',Arial,sans-serif;font-size:.86rem;color:var(--ink-soft);
+  }
+  .foot-links{display:flex;gap:18px;}
+  .foot-links a{text-decoration:none;color:var(--ink-soft);}
+  .foot-links a:hover{color:var(--accent-deep);}
+
+  @media (max-width: 860px){
+    .nav-links{display:none;}
+    .burger{display:block;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero h1{font-size:2.1rem;max-width:none;}
+    .about{grid-template-columns:1fr;}
+    .quick-cards,.blog-grid,.test-grid{grid-template-columns:1fr;}
+    .course-row{grid-template-columns:1fr;}
+    .contact-box{grid-template-columns:1fr;text-align:left;padding:40px 28px;}
+    .contact-box .btn-outline{margin-left:0;margin-top:10px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="brand">Катерина Шевцова</a>
+    <ul class="nav-links">
+      <li><a href="#top">Головна</a></li>
+      <li><a href="#courses">Курси</a></li>
+      <li><a href="#blog">Блог</a></li>
+      <li><a href="#about">Портфоліо</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Увійти</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Твій найкращий ментор в опануванні Power BI</h1>
+        <p class="lede">Навчаю Power BI за власною методикою, що поєднує простоту, структуру, практику з повною підтримкою від ментора.</p>
+        <a href="#courses" class="btn btn-primary">Читати далі</a>
+      </div>
+      <div class="hero-media">
+        <!-- ЗАМІНИ: hero-фото Каті з головної сторінки Wix -->
+        <div class="placeholder-note">місце для фото<br>(hero-image.jpg)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK COURSE LINKS -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Найкращі курси для тебе</h2>
+        <p>В академії GoToBI ти не просто проходиш курс — ти стаєш аналітиком. Моя авторська методика — це поєднання простоти, структури та глибокої підтримки.</p>
+      </div>
+      <div class="quick-cards">
+        <div class="quick-card">
+          <div class="num">01</div>
+          <h3>Наставництво в професію BI аналітик</h3>
+          <a href="#courses">Детальніше →</a>
+        </div>
+        <div class="quick-card">
+          <div class="num">02</div>
+          <h3>Інтенсив з Power BI</h3>
+          <a href="#courses">Детальніше →</a>
+        </div>
+        <div class="quick-card">
+          <div class="num">03</div>
+          <h3>Підключи MS SQL Server до Power BI Desktop</h3>
+          <a href="#courses">Детальніше →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="alt" id="about">
+    <div class="wrap about">
+      <div class="about-media">
+        <!-- ЗАМІНИ: портретне фото Каті (DSC_2083.JPG) -->
+        <div class="placeholder-note">місце для фото<br>(about-photo.jpg)</div>
+      </div>
+      <div class="about-text">
+        <h2>Про автора</h2>
+        <p><strong>Катерина Шевцова</strong> — одна з провідних спеціалісток у сфері Power BI та BI-аналітики в Україні і Швейцарії.</p>
+        <p>Має фінансову освіту, диплом ACCA та понад 13 років досвіду у фінансовому менеджменті, з яких останні 6 років працює в ІТ як Power BI консультант.</p>
+        <p>Кар'єру в аналітиці розпочала з повного самостійного опанування Power BI. Вже через кілька тижнів після подачі першої заявки отримала офер на позицію Power BI консультанта та почала працювати з міжнародними компаніями.</p>
+        <p>Співпрацювала з Adidas, Siemens, Merck, Novartis, AstraZeneca, Brugg Lifting та багато інших. Загалом реалізувала понад 100 проєктів.</p>
+        <a href="#courses" class="link-btn">Читати далі →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES DETAIL -->
+  <section id="courses">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Курси</h2>
+      </div>
+
+      <div class="courses">
+
+        <div class="course-row">
+          <div class="idx">01</div>
+          <div>
+            <h3>Наставництво в професію BI аналітик</h3>
+            <div class="course-meta">
+              <span>Старт: 01.09.2025</span>
+              <span>Тривалість: 10 місяців</span>
+              <span>Формат: онлайн</span>
+            </div>
+            <div class="course-desc">Зустрічі:
+6 місяців — основні модулі — зустрічі кожну суботу з 10:00 до 12:00 (робиться запис уроку),
+4 місяці — закріплюємо DAX — кожного тижня 2-3 уроки з DAX, дороблюємо проєкти — зустрічі один раз на місяць,
+2 індивідуальні стратегічні сесії,
+постійна комунікація, підтримка з питаннями і проєктами з наставництва.</div>
+            <div class="course-actions">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSep0GIKRkcB_DArQdFrEqFpCiUHZ1KO-eaCGDHmUF6mtRtjmA/viewform?usp=header" class="btn btn-primary" target="_blank" rel="noopener">Подати заявку</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="course-row">
+          <div class="idx">02</div>
+          <div>
+            <h3>Інтенсив з POWER BI</h3>
+            <div class="course-meta">
+              <span>6 уроків + 1 бонусний</span>
+              <span>Формат: онлайн, запис</span>
+            </div>
+            <div class="course-desc">Урок 1: Введення в Power BI.
+Урок 2: Збір та імпорт даних. Підключення до джерел даних (Excel, CSV).
+Урок 3: Моделювання даних у Power BI.
+Урок 4: Робота з DAX.
+Урок 5: Візуалізація даних.
+Урок 6: Створення дашборду.
+
+Бонусний урок: Публікація дашборду в хмару (Power BI Service).</div>
+            <div class="course-actions">
+              <span class="price-tag">2599 грн</span>
+              <a href="https://gotobi.kwiga.com/o/wxAx559YCdCL" class="btn btn-primary" target="_blank" rel="noopener">Подати заявку</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="course-row">
+          <div class="idx">03</div>
+          <div>
+            <h3>Майстер-клас. Підключи MS SQL Server до Power BI Desktop</h3>
+            <div class="course-meta">
+              <span>3 уроки</span>
+            </div>
+            <div class="course-desc">Урок 1: Встановлення SQL Server Developer.
+Урок 2: Завантаження бази Contoso.
+Урок 3: Power BI Desktop.</div>
+            <div class="course-actions">
+              <span class="price-tag">999 грн</span>
+              <a href="https://gotobi.kwiga.com/o/lWQPolZg69Ch" class="btn btn-primary" target="_blank" rel="noopener">Подати заявку</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="alt" id="blog">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Твій улюблений БЛОГ</h2>
+      </div>
+      <div class="blog-grid">
+        <a href="blog/misiya-katerini.html" class="blog-card">
+          <div class="thumb"><div class="placeholder-note">фото поста</div></div>
+          <h3>Місія Катерини</h3>
+        </a>
+        <a href="blog/v-chomu-moya-tsinnist.html" class="blog-card">
+          <div class="thumb"><div class="placeholder-note">фото поста</div></div>
+          <h3>В чому моя цінність</h3>
+        </a>
+        <a href="blog/miy-shlyah-do-uspihu.html" class="blog-card">
+          <div class="thumb"><div class="placeholder-note">фото поста</div></div>
+          <h3>Мій шлях до успіху</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Відгуки учнів</h2>
+      </div>
+      <div class="test-grid">
+        <div class="test-card">
+          <p class="quote">«Дякуююю Кать, я зараз працюю рекрутером в сфері ІТ. Хочу подякувати тобі за можливість пройти твій курс по Power BI, тоді він допоміг мені зрозуміти у якому напрямку я хочу рухатися!»</p>
+          <p class="who">Євгенія</p>
+        </div>
+        <div class="test-card">
+          <p class="quote">«Це просто супер! Дивлюсь і не вірю, що я змогла таке зробити! Катерино, не перестаю дякувати! В голові вже крутиться купа ідей як застосувати ці знання в роботі!»</p>
+          <p class="who">Анастасія</p>
+        </div>
+        <div class="test-card">
+          <p class="quote">«Найкращий наставник, якого я можу щиро рекомендувати! Я з першого потоку навчання і можу впевнено сказати: Катерина — неймовірна! Щира, відкрита, надихаюча та завжди готова підтримати.»</p>
+          <p class="who">Юлія</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <div>
+          <h2>Маєш питання, пиши сюди, розберемося разом.</h2>
+          <p>Пишу і відповідаю особисто.</p>
+        </div>
+        <div>
+          <a href="https://t.me/gotobi_group" class="btn btn-primary" target="_blank" rel="noopener">Написати в Telegram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      © 2025 Катерина Шевцова / GO TO BI
+    </div>
+    <div class="foot-links">
+      <a href="http://www.instagram.com/kateryna__shevtsova" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://t.me/gotobi_group" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://www.youtube.com/@GoToBI_with_Kate" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
